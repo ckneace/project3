@@ -5,15 +5,64 @@ body {
     background: white;
 }
 
+/* List */
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: #fff;
+    width: 500px;
+    min-height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.delete {
+    display: none;
+    margin-left: auto;
+}
+
+li:hover .delete {
+    display: block;
+}
+
+label {
+    width: 400px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+/* Form */
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+input[type=text] {
+    font-size: 1em;
+}
+
 button {
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
 }
-
 textarea {
     width: 100%;
     max-width: 500px;
     height: 100px;
+}
+/* Controls */
+
+.controls {
+    margin-top: 20px;
 }
 #team {
     width: 45%;
@@ -28,8 +77,9 @@ textarea {
 #lala{
   color: #CC2900;
 }
+
 .haha {
-  width: 400px;
+  width: 0, auto;
   height: 400px;
   display: flex;
   text-align: center;

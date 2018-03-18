@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Soccer Information</title>
+    <link rel="stylesheet" href="/styles.css"/>
+    <title>Manchester United Fan Club</title>
   </head>
-
   <body>
     <div id="app">
       <h1 id="lol">
         <img id="logo" src="mu.png" alt="Log" />
         Manchester United FC</h1>
-      <h2 id="lala">
+      <p v-show="activeItems.length === 0">Join the Fan Club for Mancester United FC!</p>
+    </br>
+    <!-- <p>
+      <div id="team">
+      {{name}} <br/>
+      {{jerseyNumber}} <br/>
+      {{nationality}}
+    </div>
+  </p> -->
+      <form v-on:submit.prevent="addItem">
+	<input type="text" v-model="text">
+  <input type="text" v-model="text2" size="5">
+	<button type="submit">Add</button>
+      </form>
+      <div class="controls">
+        <button v-on:click="showAll()">All the Members of Fan Club</button>
+      	<button v-on:click="showActive()">Active Members</button>
+      	<button v-on:click="showCompleted()">Inactive Members</button>
 
-      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Find about the Players of Manchester United FC
-    </h2>
-      <br/>
-
-      <img class="haha" src="sup.jpg">
-
-      <p>
-        <div id="team">
-        {{name}} <br/>
-        {{jerseyNumber}} <br/>
-        {{nationality}}
       </div>
-      <br/>
-      <center><button v-on:click="randomPage">Random</button></center>
-    </p>
-
-          <br/>
-
-    </form>
-
-
-
-</div>
-
-<div class="footer">
-
-  <p>&copy; <a href="https://github.com/ckneace/project3">github repository</a></p>
-
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
-    <script src="./script.js"></script>
-
-
-</body>
+         <img class="haha" src="sup.jpg">
+      <ul>
+	<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+	  <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" /><label v-bind:class="{ completed: item.completed }">{{ item.text }} {{ item.text2 }}</label>
+          
+	</li>
+      </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>
+    <script src="/script.js"></script>
+  </body>
 </html>
